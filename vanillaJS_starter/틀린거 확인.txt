@@ -1,0 +1,71 @@
+const toDoform = document.querySelector(".js-toDoForm"),
+toDoinput = toDoform.querySelector("input");
+toDoList = document.querySelector(".js-toDoList");
+
+const TODOS_LS = 'toDos';
+
+function filterFn(toDO){
+    return toDos.id === 1
+}
+
+const toDos = [];
+
+function deleteToDo(event){
+    const btn = event.target;
+    const li = btn.parentNode;
+    toDos.removeChild(li);
+    const cleanToDos = toDoList.filter();
+}
+
+function paintToDo(text){
+    const li = document.createElement("li");
+    const delBtn = document.createElement("button");
+    const newID = toDos.length +1;
+    delBtn.innerHTML = "X";
+    delBtn.addEventListener("click", deleteToDo);
+    const span = document.createElement("span");
+    span.innerHTML = text;
+    
+    li.appendChild(span);
+    li.appendChild(delBtn);
+    li.id = newID;
+
+    toDoList.appendChild(li);
+
+    const toDoObj = {
+        text: text,
+        id: newID
+    }
+    toDos.push(toDoObj);
+    savetoDos();
+}
+
+function savetoDos(){
+    localStorage.setItem(TODOS_LS, JSON.stringify(toDos));
+}
+
+function handleSubmitToDo(event){
+    event.preventDefault();
+    const currentValue = toDoinput.value;
+    paintToDo(currentValue);
+}
+
+function something(toDos){
+    paintToDo(toDos.text);
+}
+
+function loadToDos(){
+    const loaded = localStorage.getItem(TODOS_LS);
+    console.log(loaded)
+    if(loaded !== null){
+        console.log(toDos);
+        //const parsedTDos = JSON.parse(toDos);
+        //parsedTDos.forEach(something);
+    }
+}
+
+function init(){
+    loadToDos();
+    toDoform.addEventListener("submit", handleSubmitToDo);
+}
+init();

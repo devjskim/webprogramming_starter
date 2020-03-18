@@ -1,0 +1,21 @@
+body {
+    background-color: peru
+  }
+  
+  h1 {
+    color: white
+  }
+  
+  #title{
+    color: red
+  
+  }
+
+  .form,
+  .greeing{
+      display: none;
+  }
+
+  .showing{
+      display: block;
+  }
