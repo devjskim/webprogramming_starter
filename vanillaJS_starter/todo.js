@@ -6,8 +6,6 @@ const TODOS_LS = 'toDos';
 
 let toDos = [];
 
-
-
 function deleteToDo(event){
     const btn = event.target;
     const li = btn.parentNode;
@@ -29,7 +27,7 @@ function painToDo(text){
     const delBtn = document.createElement("button");
     delBtn.addEventListener("click", deleteToDo);
     const newID = toDos.length + 1
-    delBtn.innerHTML = "X";
+    delBtn.innerHTML = "❌";
     const span = document.createElement("span");
     span.innerText = text;
     li.appendChild(span);
